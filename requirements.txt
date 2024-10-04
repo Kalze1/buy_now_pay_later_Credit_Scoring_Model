@@ -1,1 +1,4 @@
-telethon
+pandas 
+matplotlib
+seaborn
+scikit-learn
