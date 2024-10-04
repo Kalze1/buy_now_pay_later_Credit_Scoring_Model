@@ -112,3 +112,59 @@ def visualize_correlation(df, column1='Amount', column2='Value'):
     # Plot heatmap and scatter plot
     plot_correlation_heatmap(df, column1, column2)
     plot_scatter(df, column1, column2)
+
+
+
+
+# Function to plot the count of each category in a bar plot
+def plot_categorical_distribution(df, column):
+    plt.figure(figsize=(10, 6))
+    
+    # Plotting the count of each category
+    sns.countplot(x=df[column], palette='Set2', order=df[column].value_counts().index)
+    
+    plt.title(f"Distribution of {column}")
+    plt.xlabel(column)
+    plt.ylabel('Count')
+    plt.xticks(rotation=45)
+    plt.show()
+
+# Function to plot a pie chart for categorical feature distribution
+def plot_pie_chart(df, column):
+    plt.figure(figsize=(8, 8))
+    
+    # Pie chart showing percentage distribution of categories
+    df[column].value_counts().plot.pie(autopct='%1.1f%%', colors=sns.color_palette('Set3'), startangle=90)
+    
+    plt.title(f"Pie Chart of {column}")
+    plt.ylabel('')  # Hides the default y-label
+    plt.show()
+
+# Main function to visualize the distribution using both bar plot and pie chart
+def visualize_categorical_distribution(df, column):
+    print(f"Visualizing the distribution of column: {column}")
+    
+    # Plotting bar plot and pie chart
+    plot_categorical_distribution(df, column)
+    plot_pie_chart(df, column)
+
+
+
+# Function to generate box plot for outlier detection
+def plot_outlier_detection(df, column):
+    plt.figure(figsize=(8, 6))
+    
+    # Box plot to visualize outliers
+    sns.boxplot(x=df[column], color='cyan')
+    
+    plt.title(f"Box Plot for Outlier Detection in {column}")
+    plt.xlabel(column)
+    plt.show()
+
+# Main function to visualize outliers in multiple columns
+def visualize_outliers(df, columns):
+    print(f"Visualizing outliers for columns: {columns}")
+    
+    # Loop through each column and generate box plots
+    for column in columns:
+        plot_outlier_detection(df, column)
