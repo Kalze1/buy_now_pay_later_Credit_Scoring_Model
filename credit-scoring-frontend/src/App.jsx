@@ -43,6 +43,7 @@ const App = () => {
 
       const result = await response.json();
       setPrediction(result.prediction);
+      console.lot(prediction)
     } catch (error) {
       console.error("Error:", error);
     }
